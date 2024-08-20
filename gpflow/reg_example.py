@@ -58,8 +58,6 @@ def plot_model(m, ax, name="", color="b"):
 M = 5
 ind = np.random.permutation(x_train.shape[0])[:M]
 z = x_train[ind].copy()
-
-# Train VFE model initialized from the perfect solution.
 sgpr = gpflow.models.SGPR(
     (x_train, y_train),
     kernel=gpflow.kernels.SquaredExponential(),
@@ -68,12 +66,8 @@ sgpr = gpflow.models.SGPR(
 
 
 sgpr_losses = []
-
-
 def callback():
     sgpr_losses.append(sgpr.training_loss().numpy())
-
-
 execute_task = gpflow.monitor.ExecuteCallback(callback)
 task_group = gpflow.monitor.MonitorTaskGroup(execute_task, period=1)
 monitor = gpflow.monitor.Monitor(task_group)
@@ -96,12 +90,8 @@ tighter_sgpr = TighterSGPR(
 )
 
 tighter_sgpr_losses = []
-
-
 def callback():
     tighter_sgpr_losses.append(tighter_sgpr.training_loss().numpy())
-
-
 execute_task = gpflow.monitor.ExecuteCallback(callback)
 task_group = gpflow.monitor.MonitorTaskGroup(execute_task, period=1)
 monitor = gpflow.monitor.Monitor(task_group)

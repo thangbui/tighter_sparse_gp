@@ -196,8 +196,10 @@ class TighterSGPR(SGPRBase_deprecated):
         mean = tf.linalg.matmul(tmp2, c, transpose_a=True)
 
         # ****************************************************
-        # X_subset = X_data[:10, :]
-        X_subset = X_data[:, :]
+        N = tf.shape(X_data)[0]
+        B = 10
+        X_subset = X_data[:B, :]
+        # X_subset = X_data[:, :]
         kuf = Kuf(self.inducing_variable, self.kernel, X_subset)
         ksf = self.kernel(Xnew, X_subset)
         LinvKuf = tf.linalg.triangular_solve(L, kuf, lower=True)
@@ -243,8 +245,10 @@ class TighterSGPR(SGPRBase_deprecated):
                 + tf.reduce_sum(tf.square(tmp2), 0)
                 - tf.reduce_sum(tf.square(tmp1), 0)
             )
+            # ****************************************************
             # var -= tf.reduce_sum(dsf * scaled_dsf, 1)
             var -= tf.reduce_sum(LdfinvDfs * LdfinvSDfs, 0)
+            # ****************************************************
             var = tf.tile(var[:, None], [1, self.num_latent_gps])
 
         return mean + self.mean_function(Xnew), var
