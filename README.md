@@ -25,7 +25,7 @@ If you use the code here, please cite:
 @article{bat2025,
     title={Tighter sparse variational Gaussian processes},
     author={Thang D.~Bui and Matthew Ashman and Richard E.~Turner},
-    journal={Transactions in Machine Learning Research},
+    journal={Transactions on Machine Learning Research},
     year={2025},
     url={https://openreview.net/forum?id=L33DSu3zvq},
 }
