@@ -1,0 +1,33 @@
+## Tighter sparse Gaussian process approximations
+
+### Environment set-up
+```bash
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+pip install -e .
+```
+
+### Example
+
+``` bash
+cd example
+python run_snelson.py
+```
+should give:
+
+```markdown
+![Snelson](./example/snelson_results.png)
+```
+
+### Citation
+If you use the code here, please cite:
+
+```latex
+@article{bat2025,
+    title={Tighter sparse Gaussian process approximations},
+    author={Thang D.~Bui and Matthew Ashman and Richard E.~Turner},
+    journal={Transactions in Machine Learning Research},
+    year={2025},
+}
+```

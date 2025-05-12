@@ -1,0 +1,27 @@
+[project]
+name = "tsvgp"
+version = "0.1"
+description = "Tighter sparse GP approximations"
+authors = [{name="Thang Bui", email="thang.bui@anu.edu.au"}, {name="Matthew Ashman", email="mca39@cam.ac.uk"}, {name="Richard Turner", email="ret26@cam.ac.uk"}]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.setuptools]
+py-modules = ["tsvgp"]
+
+[tool.isort]
+profile = "black"
+
+[tool.pylint]
+max-line-length = 120
+disable = "C0114, C0115, C0103, C0116, R0903, R0913, R0914, R1729, W0231"
+
+[tool.pylint.TYPECHECK]
+generated-members = "gpflow.*, numpy.*, torch.*, torch.nn.*, nn.*, torch.nn.functional.*"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

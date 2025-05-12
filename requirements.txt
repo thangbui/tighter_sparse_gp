@@ -1,0 +1,5 @@
+# tensorflow[and-cuda]
+tensorflow-probability==0.24.0
+gpflow
+matplotlib
+tqdm
